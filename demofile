@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') {          
+            steps {
+                git branch: "master", url: "https://github.com/Aanidhay/SL-MAVEN-18-MAR-DEVOPS.git"
+            }
+        }
+        stage('Build') {
+            steps {
+                // Use Maven to build your project
+                bat 'mvn clean package'
+            }
+        }
+        stage('Test') {
+            steps {
+                // Run tests if applicable
+                bat 'mvn test'
+            }
+        }
+    }
+} 
